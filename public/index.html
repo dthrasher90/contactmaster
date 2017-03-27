@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>My Mean Stack application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type: "text/css" href="main.css">
+    <meta charset="UTF-8">
+    <base href="/">
+    <script src=https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="controller/controller.js">
+    </script>
+</head>
+
+<header class="jumbotron text-center">
+    <h2>Mean Stack ContactList App </h2>
+    <h4>Feel free to use</h4>
+</header>
+
+<body ng-app="contactlistApp" ng-controller="MainCtrl">
+    <button class="btn btn-warning addbtn" onclick="openNav()">ADD </button>
+<div id="main">
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col.xs.10">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th> First Name </th>
+                            <th> Last Name </th>
+                            <th> Email </th>
+                            <th> Phone </th>
+                            <th> Social Media</th>
+                        </tr>
+                    </thead>
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-xs-2">
+                <tbody>
+                    <p>Search:  <input type="test" ng-model="searchContact"></p>
+
+                    <tr ng-repeat="contact in contacts | filter : searchContact">
+
+
+                        <td> {{contact.firstname}} </td>
+                        <td> {{contact.lastname}} </td>
+                        <td> {{contact.email}} </td>
+                        <td> {{contact.phone}} </td>
+                        <td> {{contact.socialmedia}} </td>
+
+                        <div ng-show="inputBoxes">
+
+                        </div>
+                          <td>
+                            <button type="button" class="btn btn-default btn-sm editbtn" ng-click="edit(contact._id)">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            </button> </td>
+                              <td><button type="button" class="btn btn-default btn-sm delete" ng-click="delete(contact._id)">
+                              <span class="glyphicon glyphicon-trash"></span>
+                          </button> </td>
+
+
+                        </tr>
+
+
+                    </tbody>
+                </table>
+
+                    <!--========================== side nav ============================= -->
+
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <input class="form-control" ng-model="contact.firstname" placeholder="first name">
+                    <input class="form-control" ng-model="contact.lastname" placeholder="last name">
+                    <input class="form-control" ng-model="contact.email" placeholder="email">
+                    <input class="form-control" ng-model="contact.phone" placeholder="phone number">
+                    
+
+                    <button type="button" ng-click="addContact(contact._id)" class="btn btn-warning">Add</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    /* Set the width of the side navigation to 250px */
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+
+    }
+
+    /* Set the width of the side navigation to 0 */
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+</script>

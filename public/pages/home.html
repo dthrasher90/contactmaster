@@ -1,0 +1,33 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th> First Name </th>
+      <th> Last Name </th>
+      <th> Email </th>
+      <th> Phone </th>
+    </tr>
+  </thead>
+  <tbody>
+       <tr> <!-- IDEA: drop down boxes for contact update -->
+
+          <td><input class="form-control"  ng-model= "contact.firstname"></td>
+          <td><input class="form-control"  ng-model= "contact.lastname"></td>
+          <td><input class="form-control"  ng-model= "contact.email"></td>
+          <td><input class="form-control"  ng-model= "contact.phone"></td>
+          <td></td>
+          <td> <button type="button" ng-click= "addContact(contact._id)"  class="btn btn-primary">Add</button></td>
+
+      </tr>
+
+    <tr ng-repeat= "contact in contacts">
+      <td> {{contact.firstname}} </td>
+      <td> {{contact.lastname}} </td>
+      <td> {{contact.email}} </td>
+      <td> {{contact.phone}} </td>
+      <td> {{contact._id}} </td>
+      <td><button type="button" ng-click="edit(contact._id)" class="btn btn-warning">Edit</button></td>
+      <td> <button type="button" ng-click= "delete(contact._id)"  class="btn btn-danger">Delete</button></td>
+
+    </tr>
+  </tbody>
+</table>
